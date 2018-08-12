@@ -35,11 +35,19 @@ switchNameHandler = (newName) => {
   )
 }
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px'
+    };
     return (
       <div className="App">
         <h1> Hi, I am react app </h1>
         <p>This is really working </p>
-        <button onClick = {() => this.switchNameHandler('Maximilian')}> Switch Name </button>
+        <button
+        style = {style}
+        onClick = {() => this.switchNameHandler('Maximilian')}> Switch Name </button>
         <Person name = {this.state.person[0].name} age = {this.state.person[0].age}/>
         <Person name = {this.state.person[1].name}
          age = {this.state.person[1].age}
