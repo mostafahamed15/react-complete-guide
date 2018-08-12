@@ -8,8 +8,15 @@ class App extends Component {
     {name : 'Mostafa' , age: 20},
     {name : 'Mohammed' , age: 15},
     {name : 'Marwam' , age: 28}
-  ]
+  ],
+  otherState: 'some other value',
+  showPersons: false
 };
+ 
+togglePersonHandler = () => {
+const doesShow = this.state.showPersons;
+this.setState({showPersons: !doesShow});
+}
 nameChangedHandler = (event) =>{
   this.setState(
     {
@@ -47,13 +54,16 @@ switchNameHandler = (newName) => {
         <p>This is really working </p>
         <button
         style = {style}
-        onClick = {() => this.switchNameHandler('Maximilian')}> Switch Name </button>
+        onClick = {this.togglePersonHandler}> Switch Name </button>
+        { this.state.showPersons?
+        <div>
         <Person name = {this.state.person[0].name} age = {this.state.person[0].age}/>
         <Person name = {this.state.person[1].name}
          age = {this.state.person[1].age}
          click = {this.switchNameHandler.bind(this, 'Max!')}
         changed = {this.nameChangedHandler}> My hobbies: Racing</Person>
         <Person name = {this.state.person[2].name} age = {this.state.person[2].age}/>
+        </div>: null}
       </div>
     );
    // return React.createElement('div', {className: 'App'}, React.createElement('h1',null , "Does it work now?"));
