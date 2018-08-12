@@ -48,14 +48,9 @@ switchNameHandler = (newName) => {
       border: '1px solid blue',
       padding: '8px'
     };
-    return (
-      <div className="App">
-        <h1> Hi, I am react app </h1>
-        <p>This is really working </p>
-        <button
-        style = {style}
-        onClick = {this.togglePersonHandler}> Switch Name </button>
-        { this.state.showPersons?
+    let persons = null;
+    if (this.state.showPersons){
+      persons = (
         <div>
         <Person name = {this.state.person[0].name} age = {this.state.person[0].age}/>
         <Person name = {this.state.person[1].name}
@@ -63,7 +58,18 @@ switchNameHandler = (newName) => {
          click = {this.switchNameHandler.bind(this, 'Max!')}
         changed = {this.nameChangedHandler}> My hobbies: Racing</Person>
         <Person name = {this.state.person[2].name} age = {this.state.person[2].age}/>
-        </div>: null}
+        </div>
+      )
+    }
+    return (
+      <div className="App">
+        <h1> Hi, I am react app </h1>
+        <p>This is really working </p>
+        <button
+        style = {style}
+        onClick = {this.togglePersonHandler}> Switch Person </button>
+       
+      {persons}
       </div>
     );
    // return React.createElement('div', {className: 'App'}, React.createElement('h1',null , "Does it work now?"));
