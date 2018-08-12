@@ -10,13 +10,25 @@ class App extends Component {
     {name : 'Marwam' , age: 28}
   ]
 };
+nameChangedHandler = (event) =>{
+  this.setState(
+    {
+      person:[
+        {name : 'Mostafa', age: 20},
+        {name : event.target.value, age: 15},
+        {name : 'Marwam' , age: 35}
+      ]
+    }
+  )
+
+}
 switchNameHandler = (newName) => {
   //DON'T DO THIS: this.state.persons[0].name = 'Maximilian'
   this.setState(
     {
       person:[
         {name : newName, age: 20},
-        {name : 'Mohammed' , age: 15},
+        {name : 'Muhammed' , age: 15},
         {name : 'Marwam' , age: 40}
       ]
     }
@@ -31,7 +43,8 @@ switchNameHandler = (newName) => {
         <Person name = {this.state.person[0].name} age = {this.state.person[0].age}/>
         <Person name = {this.state.person[1].name}
          age = {this.state.person[1].age}
-         click = {this.switchNameHandler.bind(this, 'Max!')}> My hobbies: Racing</Person>
+         click = {this.switchNameHandler.bind(this, 'Max!')}
+        changed = {this.nameChangedHandler}> My hobbies: Racing</Person>
         <Person name = {this.state.person[2].name} age = {this.state.person[2].age}/>
       </div>
     );
