@@ -30,9 +30,9 @@ nameChangedHandler = (event) =>{
 
 }
 deletePersonHandler = (personIndex) => {
-  const persons = this.state.person;
+  const persons = [...this.state.person];
   persons.splice(personIndex, 1);
-  this.setState({persons: persons});
+  this.setState({person: persons});
 }
   render() {
     const style = {
