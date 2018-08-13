@@ -52,12 +52,10 @@ switchNameHandler = (newName) => {
     if (this.state.showPersons){
       persons = (
         <div>
-        <Person name = {this.state.person[0].name} age = {this.state.person[0].age}/>
-        <Person name = {this.state.person[1].name}
-         age = {this.state.person[1].age}
-         click = {this.switchNameHandler.bind(this, 'Max!')}
-        changed = {this.nameChangedHandler}> My hobbies: Racing</Person>
-        <Person name = {this.state.person[2].name} age = {this.state.person[2].age}/>
+       { this.state.person.map((person) => {
+         return <Person name = {person.name}
+         age = {person.age} />
+       })}
         </div>
       )
     }
