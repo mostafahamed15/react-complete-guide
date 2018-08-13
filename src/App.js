@@ -17,16 +17,17 @@ togglePersonHandler = () => {
 const doesShow = this.state.showPersons;
 this.setState({showPersons: !doesShow});
 }
-nameChangedHandler = (event) =>{
-  this.setState(
-    {
-      person:[
-        {name : 'Mostafa', age: 20},
-        {name : event.target.value, age: 15},
-        {name : 'Marwam' , age: 35}
-      ]
-    }
-  )
+nameChangedHandler = (event, id) =>{
+  const personIndex = this.state.person.findIndex( p => {
+    return p.id === id;
+  });
+  const person = {
+    ...this.state.person[personIndex]
+  };
+  person.name = person.target.value;
+  const persons = [...this.state.person];
+  persons[personIndex] = person;
+  this.setState({person: persons})
 
 }
 deletePersonHandler = (personIndex) => {
@@ -48,6 +49,7 @@ deletePersonHandler = (personIndex) => {
        { this.state.person.map((person, index) => {
          return <Person 
          click={() => this.deletePersonHandler(index)}
+         changed = {(event) => this.nameChangedHandler(event, person.id)}
          name = {person.name}
          age = {person.age} 
          key = {person.id}/>
