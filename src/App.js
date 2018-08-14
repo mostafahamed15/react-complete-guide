@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
 import './App.css';
-import Radium, {StyleRoot} from 'radium';
+
 
 class App extends Component {
   state = {
@@ -63,10 +63,7 @@ deletePersonHandler = (personIndex) => {
         </div>
       )
       style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+     
     }
     const classes = [];
    if (this.state.person.length <= 2){
@@ -76,7 +73,7 @@ deletePersonHandler = (personIndex) => {
      classes.push('bold');
    }
     return (
-      <StyleRoot>
+      
       <div className="App">
         <h1> Hi, I am react app </h1>
         <p className = {classes.join(' ')}>This is really working </p>
@@ -86,10 +83,10 @@ deletePersonHandler = (personIndex) => {
        
       {persons}
       </div>
-      </StyleRoot>
+      
     );
    // return React.createElement('div', {className: 'App'}, React.createElement('h1',null , "Does it work now?"));
   }
 }
 
-export default Radium(App);
+export default App;
