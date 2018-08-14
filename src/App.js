@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
 import './App.css';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 
 class App extends Component {
   state = {
@@ -76,6 +76,7 @@ deletePersonHandler = (personIndex) => {
      classes.push('bold');
    }
     return (
+      <StyleRoot>
       <div className="App">
         <h1> Hi, I am react app </h1>
         <p className = {classes.join(' ')}>This is really working </p>
@@ -85,6 +86,7 @@ deletePersonHandler = (personIndex) => {
        
       {persons}
       </div>
+      </StyleRoot>
     );
    // return React.createElement('div', {className: 'App'}, React.createElement('h1',null , "Does it work now?"));
   }
