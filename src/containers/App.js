@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Persons from '../components/persons/persons';
 import classes from './App.css';
 import Cockpit from '../components/Cockpit/cockpit';
 
 
-class App extends Component {
+class App extends PureComponent {
 
   constructor(props){
     super(props);
@@ -28,10 +28,11 @@ class App extends Component {
     console.log('[app.js] inside componentDidMount()');
   }
   
-  shouldComponentUpdate(nextProps, nextState){
-    console.log('[Update app.js] inside shouldComponentUpdate()', nextProps, nextState);
-    return true;
-}
+//   shouldComponentUpdate(nextProps, nextState){
+//     console.log('[Update app.js] inside shouldComponentUpdate()', nextProps, nextState);
+//     return nextState.person !== this.state.person ||
+//     nextState.showPersons !== this.state.showPersons;
+// }
 
 componentWillUpdate(nextProps, nextState){
   console.log('[Update app.js] inside componentWillUpdate()', nextProps, nextState);
@@ -92,6 +93,9 @@ deletePersonHandler = (personIndex) => {
     return (
       
       <div className={classes.App}>
+      <button
+      onClick = {() => {this.setState({showPersons: true})}}>
+      Show Persons</button>
      <Cockpit
      appTitle = {this.props.title}
      showPersons = {this.state.showPersons}
