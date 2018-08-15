@@ -5,15 +5,37 @@ import Cockpit from '../components/Cockpit/cockpit';
 
 
 class App extends Component {
-  state = {
-    person:[
-    {id: 'ldjl' ,name : 'Mostafa' , age: 20},
-    {id: 'ldjd' ,name : 'Mohammed' , age: 15},
-    {id: 'ldjc' ,name : 'Marwam' , age: 28}
-  ],
-  otherState: 'some other value',
-  showPersons: false
-};
+
+  constructor(props){
+    super(props);
+    console.log('[app.js] inside constructor', props);
+    this.state = {
+      person:[
+      {id: 'ldjl' ,name : 'Mostafa' , age: 20},
+      {id: 'ldjd' ,name : 'Mohammed' , age: 15},
+      {id: 'ldjc' ,name : 'Marwam' , age: 28}
+    ],
+    otherState: 'some other value',
+    showPersons: false
+  };
+  }
+
+  componentWillMount(){
+    console.log('[app.js] inside component will mount()');
+  }
+
+  componentDidMount(){
+    console.log('[app.js] inside componentDidMount()');
+  }
+//   state = {
+//     person:[
+//     {id: 'ldjl' ,name : 'Mostafa' , age: 20},
+//     {id: 'ldjd' ,name : 'Mohammed' , age: 15},
+//     {id: 'ldjc' ,name : 'Marwam' , age: 28}
+//   ],
+//   otherState: 'some other value',
+//   showPersons: false
+// };
  
 togglePersonHandler = () => {
 const doesShow = this.state.showPersons;
@@ -38,7 +60,8 @@ deletePersonHandler = (personIndex) => {
   this.setState({person: persons});
 }
   render() {
-   console.log('persons app screen: ', this.state.person);
+    console.log('[app.js] inside rendrer');
+   
     let persons = null;
     
     if (this.state.showPersons){

@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
 import classes from './person.css';
 class Person  extends Component {
+    constructor(props){
+        super(props);
+        console.log('[person.js] inside constructor', props);
+       
+      }
+    
+      componentWillMount(){
+        console.log('[person.js] inside component will mount()');
+      }
+    
+      componentDidMount(){
+        console.log('[person.js] inside componentDidMount()');
+      }
     state = {  }
     render() { 
+        console.log('[person.js] inside render()');
         return (  
         
                 <div className = {classes.Person} >
