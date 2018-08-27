@@ -16,6 +16,10 @@ class Person  extends Component {
     
       componentDidMount(){
         console.log('[person.js] inside componentDidMount()');
+        if (this.props.position === 0){
+            this.inputElement.focus();
+        }
+       
       }
     state = {  }
     render() { 
@@ -25,7 +29,11 @@ class Person  extends Component {
             <aux>
             <p onClick = {this.props.click}>I'm a {this.props.name} and I'm {this.props.age} years old .</p>
             <p > {this.props.children} </p>
-            <input type = 'text' onChange = {this.props.changed} value = {this.props.name} />
+            <input 
+            ref = { (inp) =>{this.inputElement = inp}}
+            type = 'text' 
+            onChange = {this.props.changed}
+             value = {this.props.name} />
             {/* value = {props.name} donot work i donot know why make it */}
             </aux>
         
