@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Persons from '../components/persons/persons';
 import classes from './App.css';
 import Cockpit from '../components/Cockpit/cockpit';
+import withClass from '../hoc/withClass';
 
 
 class App extends PureComponent {
@@ -92,7 +93,7 @@ deletePersonHandler = (personIndex) => {
     
     return (
       
-      <div className={classes.App}>
+      <withClass classes = {classes.App}>
       <button
       onClick = {() => {this.setState({showPersons: true})}}>
       Show Persons</button>
@@ -104,7 +105,7 @@ deletePersonHandler = (personIndex) => {
      clicked = {this.togglePersonHandler} />
        
       {persons}
-      </div>
+      </withClass>
       
     );
    // return React.createElement('div', {className: 'App'}, React.createElement('h1',null , "Does it work now?"));
