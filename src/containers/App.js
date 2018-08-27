@@ -18,7 +18,8 @@ class App extends PureComponent {
       {id: 'ldjc' ,name : 'Marwam' , age: 28}
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    toggleClicked: false
   };
   }
 
@@ -54,7 +55,12 @@ componentDidUpdate(){
  
 togglePersonHandler = () => {
 const doesShow = this.state.showPersons;
-this.setState({showPersons: !doesShow});
+this.setState((prevState, props) =>{
+  return{
+    showPersons: !doesShow,
+    toggleClicked : prevState.toggleClicked + 1}
+  
+});
 }
 nameChangedHandler = (event, id) =>{
   const personIndex = this.state.person.findIndex( p => {
