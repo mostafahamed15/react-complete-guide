@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './person.css';
-import WithClass from '../../../hoc/withClass';
+import withClass from '../../../hoc/withClass';
+import aux from '../../../hoc/AuxM';
 class Person  extends Component {
     constructor(props){
         super(props);
@@ -20,12 +21,12 @@ class Person  extends Component {
         console.log('[person.js] inside render()');
         return (  
         
-            <WithClass classes = {classes.Person}>
+            <aux>
             <p onClick = {this.props.click}>I'm a {this.props.name} and I'm {this.props.age} years old .</p>
             <p > {this.props.children} </p>
             <input type = 'text' onChange = {this.props.changed} value = {this.props.name} />
             {/* value = {props.name} donot work i donot know why make it */}
-            </WithClass>
+            </aux>
         
         );
         // return [
@@ -36,5 +37,5 @@ class Person  extends Component {
     }
 }
  
-export default Person ;
+export default withClass(Person, classes.Person) ;
 
