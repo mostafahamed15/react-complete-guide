@@ -6,6 +6,7 @@ import aux from '../hoc/AuxM';
 import withClass from '../hoc/withClass';
 
 
+
 class App extends PureComponent {
 
   constructor(props){
